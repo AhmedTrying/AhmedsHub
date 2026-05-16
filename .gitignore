@@ -1,0 +1,11 @@
+node_modules
+.next
+out
+build
+.env*.local
+.DS_Store
+next-env.d.ts
+*.log
+
+# Claude Code — per-user only; launch.json stays committed
+.claude/settings.local.json
