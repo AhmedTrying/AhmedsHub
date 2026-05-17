@@ -58,7 +58,7 @@ export const estimateItems = pgTable("estimate_items", {
   id: text("id").primaryKey(),
   estimateId: text("estimate_id").notNull(),
   item: text("item").notNull(),
-  description: text("description").notNull(),
+  desc: text("description").notNull(),
   category: text("category").notNull(),
   unit: text("unit").notNull(),
   qty: real("qty").notNull().default(0),
@@ -85,9 +85,9 @@ export const notes = pgTable("notes", {
   title: text("title").notNull(),
   body: text("body").notNull().default(""),
   tags: jsonb("tags").$type<string[]>().notNull().default([]),
-  projectId: text("project_id"),
+  project: text("project_id"),
   pinned: boolean("pinned").notNull().default(false),
-  whenLabel: text("when_label").notNull().default(""),
+  when: text("when_label").notNull().default(""),
   createdAt: bigint("created_at", { mode: "number" }).notNull(),
 });
 
@@ -109,7 +109,7 @@ export const siteVisits = pgTable("site_visits", {
 export const checklistItems = pgTable("checklist_items", {
   id: text("id").primaryKey(),
   siteVisitId: text("site_visit_id").notNull(),
-  groupName: text("group_name").notNull(),
+  group: text("group_name").notNull(),
   text: text("text").notNull(),
   done: boolean("done").notNull().default(false),
 });
@@ -135,7 +135,7 @@ export const templates = pgTable("templates", {
   color: text("color").notNull().default(""),
   rows: integer("rows").notNull().default(0),
   used: integer("used").notNull().default(0),
-  description: text("description").notNull().default(""),
+  desc: text("description").notNull().default(""),
   kind: text("kind").notNull(),
 });
 
@@ -144,8 +144,8 @@ export const activity = pgTable("activity", {
   id: text("id").primaryKey(),
   who: text("who").notNull(),
   what: text("what").notNull(),
-  onLabel: text("on_label").notNull(),
-  whenLabel: text("when_label").notNull().default(""),
+  on: text("on_label").notNull(),
+  when: text("when_label").notNull().default(""),
   icon: text("icon").notNull().default(""),
   at: bigint("at", { mode: "number" }).notNull(),
 });

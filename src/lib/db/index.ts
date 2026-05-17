@@ -8,7 +8,12 @@ if (!process.env.DATABASE_URL) {
   );
 }
 
-const sql = neon(process.env.DATABASE_URL);
+// Pass cache: "no-store" so Next.js (which wraps the global fetch in App Router
+// with a request-memoizing cache) doesn't serve stale rows after a mutation.
+// See https://neon.tech/docs/serverless/serverless-driver#caching-and-data-freshness
+const sql = neon(process.env.DATABASE_URL, {
+  fetchOptions: { cache: "no-store" },
+});
 
 export const db = drizzle(sql, { schema });
 export { schema };

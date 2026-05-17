@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { Sidebar } from "@/components/Sidebar";
 import { Topbar } from "@/components/Topbar";
@@ -40,16 +40,13 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname() || "/";
   const crumbs = useCrumbs(pathname);
   const theme = useStore((s) => s.settings.theme);
+  const hydrated = useStore((s) => s.hydrated);
+  const init = useStore((s) => s.init);
 
-  const [hydrated, setHydrated] = useState(false);
+  // Single round-trip to Neon hydrates the entire client store.
   useEffect(() => {
-    if (useStore.persist.hasHydrated()) {
-      setHydrated(true);
-      return;
-    }
-    const unsub = useStore.persist.onFinishHydration(() => setHydrated(true));
-    return unsub;
-  }, []);
+    init();
+  }, [init]);
 
   const {
     paletteOpen,

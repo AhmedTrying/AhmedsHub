@@ -77,81 +77,28 @@ async function main() {
   await db.insert(schema.estimates).values(seedEstimates);
 
   console.log("Inserting estimate items…");
-  await db.insert(schema.estimateItems).values(
-    seedEstimateItems.map((r) => ({
-      id: r.id,
-      estimateId: r.estimateId,
-      item: r.item,
-      description: r.desc,
-      category: r.category,
-      unit: r.unit,
-      qty: r.qty,
-      cost: r.cost,
-      markup: r.markup,
-      notes: r.notes,
-    }))
-  );
+  await db.insert(schema.estimateItems).values(seedEstimateItems);
 
   console.log("Inserting rates…");
   await db.insert(schema.rates).values(seedRates);
 
   console.log("Inserting notes…");
-  await db.insert(schema.notes).values(
-    seedNotes.map((n) => ({
-      id: n.id,
-      title: n.title,
-      body: n.body,
-      tags: n.tags,
-      projectId: n.project,
-      pinned: n.pinned,
-      whenLabel: n.when,
-      createdAt: n.createdAt,
-    }))
-  );
+  await db.insert(schema.notes).values(seedNotes);
 
   console.log("Inserting site visits…");
   await db.insert(schema.siteVisits).values(seedSiteVisits);
 
   console.log("Inserting checklist items…");
-  await db.insert(schema.checklistItems).values(
-    seedChecklistItems.map((c) => ({
-      id: c.id,
-      siteVisitId: c.siteVisitId,
-      groupName: c.group,
-      text: c.text,
-      done: c.done,
-    }))
-  );
+  await db.insert(schema.checklistItems).values(seedChecklistItems);
 
   console.log("Inserting RFQs…");
   await db.insert(schema.rfqs).values(seedRfqs);
 
   console.log("Inserting templates…");
-  await db.insert(schema.templates).values(
-    seedTemplates.map((t) => ({
-      id: t.id,
-      name: t.name,
-      icon: t.icon,
-      color: t.color,
-      rows: t.rows,
-      used: t.used,
-      description: t.desc,
-      kind: t.kind,
-    }))
-  );
+  await db.insert(schema.templates).values(seedTemplates);
 
   console.log("Inserting activity…");
-  await db.insert(schema.activity).values(
-    seedActivity.map((a) => ({
-      id: a.id,
-      who: a.who,
-      what: a.what,
-      onLabel: a.on,
-      whenLabel: a.when,
-      icon: a.icon,
-      at: a.at,
-    }))
-  );
+  await db.insert(schema.activity).values(seedActivity);
 
   console.log("Inserting project tasks…");
   await db.insert(schema.projectTasks).values(seedProjectTasks);

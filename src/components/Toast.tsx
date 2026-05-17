@@ -1,7 +1,8 @@
 "use client";
 
-import React, { createContext, useCallback, useContext, useState } from "react";
+import React, { createContext, useCallback, useContext, useEffect, useState } from "react";
 import { Check } from "lucide-react";
+import { setToastPusher } from "@/lib/toastBus";
 
 interface Toast {
   id: number;
@@ -27,6 +28,11 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
       setList((l) => l.filter((t) => t.id !== id));
     }, 2400);
   }, []);
+
+  // Register with the module-scoped bus so non-React code (the store) can toast.
+  useEffect(() => {
+    setToastPusher(push);
+  }, [push]);
 
   return (
     <ToastCtx.Provider value={{ push }}>

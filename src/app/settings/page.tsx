@@ -36,8 +36,8 @@ export default function SettingsPage() {
 
   const doImport = (file: File) => {
     const reader = new FileReader();
-    reader.onload = () => {
-      const ok = importJSON(String(reader.result || ""));
+    reader.onload = async () => {
+      const ok = await importJSON(String(reader.result || ""));
       if (ok) push("Workspace imported");
       else push("Invalid file format");
     };
@@ -188,8 +188,8 @@ export default function SettingsPage() {
                   color: "var(--t-red-fg)",
                   borderColor: "var(--t-red-bg)",
                 }}
-                onClick={() => {
-                  resetWorkspace();
+                onClick={async () => {
+                  await resetWorkspace();
                   setConfirmReset(false);
                   push("Workspace reset to defaults");
                 }}
@@ -200,8 +200,8 @@ export default function SettingsPage() {
           )}
         </div>
         <p style={{ color: "var(--text-3)", fontSize: 12, marginTop: 10 }}>
-          All your data lives in your browser&apos;s localStorage. Export
-          regularly if it matters.
+          Your data lives in a Neon Postgres database. Export regularly if it
+          matters.
         </p>
       </div>
     </div>
