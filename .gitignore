@@ -9,3 +9,9 @@ next-env.d.ts
 
 # Claude Code — per-user only; launch.json stays committed
 .claude/settings.local.json
+
+.vercel
+.env*.local
+
+# TypeScript incremental build cache
+tsconfig.tsbuildinfo
