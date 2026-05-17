@@ -40,7 +40,6 @@ src/
     calc.ts           # Estimate totals
     format.ts         # AED / number / date helpers
     tints.ts          # Notion-style status/scope pill tones
-Frontend/         # Original HTML/JSX prototype (visual reference)
 ```
 
 ## Features
