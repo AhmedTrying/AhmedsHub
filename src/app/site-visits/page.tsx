@@ -373,18 +373,10 @@ function Info({
     >
       <span className="subtle">{label}</span>
       <input
-        className={mono ? "mono" : ""}
+        className={"qi-input" + (mono ? " mono" : "")}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        style={{
-          textAlign: "right",
-          border: "none",
-          background: "transparent",
-          outline: "none",
-          fontWeight: 500,
-          maxWidth: 180,
-          color: "var(--text)",
-        }}
+        title="Click to edit"
       />
     </div>
   );

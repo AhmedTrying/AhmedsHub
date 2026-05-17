@@ -387,6 +387,24 @@ input, textarea, select { font-family: inherit; color: inherit; }
 .boq-table input:hover, .boq-table select:hover { background: var(--surface-2); }
 .boq-table input:focus, .boq-table select:focus { background: var(--surface); border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
 .boq-table tr:hover .row-tools { opacity: 1; }
+
+/* Inline-editable Quick-info field — looks like text, reveals affordance on hover */
+.qi-input {
+  text-align: right;
+  border: 1px solid transparent;
+  background: transparent;
+  outline: none;
+  font-weight: 500;
+  max-width: 180px;
+  color: var(--text);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12.5px;
+  transition: background 0.12s, border-color 0.12s;
+  font-family: inherit;
+}
+.qi-input:hover { background: var(--surface-2); border-color: var(--border); }
+.qi-input:focus { background: var(--surface); border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
 .row-tools { opacity: 0; display: flex; gap: 2px; }
 .row-tools button { border: none; background: transparent; color: var(--text-3); padding: 4px; border-radius: 4px; }
 .row-tools button:hover { background: var(--surface-hover); color: var(--text); }
